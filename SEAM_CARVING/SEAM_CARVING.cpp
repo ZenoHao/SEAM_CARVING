@@ -9,14 +9,23 @@
 #include <stdio.h>
 using namespace std;
 using namespace cv;
-int _tmain(int argc, char * argv[])
-{
+
 	// implementing seam carving algorithm given in http://www.win.tue.nl/~wstahw/edu/2IV05/seamcarving.pdf
 	// using OpenCV libraries
-	
-	Mat src, src_gray;
+
+int main(int argc, char** argv)
+{
+	Mat src;
 	/// Read the image
 	src = imread( argv[1], 1 );
+	// Copy is used to mark detected blobs without using original image. 
+	// This may be over precautionary and subject to change
+	if( !src.data )
+	{ return -1; }
+
+	imshow( "Output", src );
+
+	waitKey(0);
 	return 0;
 }
 
